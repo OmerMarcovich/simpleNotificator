@@ -1,0 +1,48 @@
+.simpleNotification {
+    padding: 20px;
+    font-family: arial;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: block;
+    opacity: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.simpleNotification button.dismiss {
+    font-family: monospace;
+    font-size: 15px;
+    font-weight: bold;
+    color: #868686;
+    cursor: pointer;
+    text-decoration: none;
+    float: right;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.simpleNotification button.dismiss:hover {
+    color: inherit;
+}
+
+.simpleNotification-info {
+    background: #c1dbf2;
+    color: #0f7581;
+}
+
+.simpleNotification-success {
+    background: #d2e6d0;
+    color: #277219;
+}
+
+.simpleNotification-warning {
+    background: #facf9d;
+    color: #816a0f;
+}
+
+.simpleNotification-danger {
+    background: #faae9d;
+    color: #8e2416;
+}
