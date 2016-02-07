@@ -40,7 +40,7 @@ var simpleNotificator = function () {
         notificationSettings = (options) ? $.extend({}, settings, options) : settings;
 
         // Creating a new notification block
-        var newNotification = $('<div style="width:' + notificationSettings.width + '" class="alert alert-' + notificationSettings.type + '"><strong>' + notificationSettings.textPrefix + ' </strong>' + text + '</div>');
+        var newNotification = $('<div style="width:' + notificationSettings.width + '" class="simpleNotification simpleNotification-' + notificationSettings.type + '"><strong>' + notificationSettings.textPrefix + ' </strong>' + text + '</div>');
 
         // Setting a dismiss button if the notification element is at "stickMode"
         if (notificationSettings.stickMode) {
@@ -188,6 +188,3 @@ var simpleNotificator = function () {
         return options;
     }
 })(jQuery);
-
-
-
