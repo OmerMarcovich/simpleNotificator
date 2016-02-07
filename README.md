@@ -7,11 +7,13 @@ simpleNotificator is a simple jQuery based plugin, allow create informative noti
 
 ##How to get started?
 
-Installing the plugin is easy as pie! Copy stylesheet (css) and JavaScript (js) files to your folder and add the following HTML code snippet between the <header></header> tags.
+Installing the plugin is easy as pie! Copy stylesheet (css) and JavaScript (js) files to your folder and add the following HTML code snippet between the ```<header></header>``` tags.
 
+```html
 <link href="simpleNotificator.css" rel="stylesheet" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="simpleNotificator.jQuery.js"></script>
+```
 
 Pay attention: if you are copying the stylesheet & JavaScript to sub directories, make sure you change the paths in the code snippet above.
 
@@ -20,25 +22,43 @@ Pay attention: if you are copying the stylesheet & JavaScript to sub directories
 All you need to do is define where the notification should be appended, set the notification message and if you wish, customize the notification and add a custom callback.
 In the examples below we will append all notifications to a div element with a "notificationBlock" id attribute.
 
+Note: Please add the script code at the end of the body element.
+
 **Generate An Info Notification**
-$('#notificationBlock').notification('This is an info notification', function () {
-    // Customized callback function
-});
+```js
+<script>
+    $('#notificationBlock').notification('This is an info notification', function () {
+        // Customized callback function
+    });
+</script>
+```
 
 **Generate A Success Notification**
-$('#notificationBlock').successNotification('This is a success notification', function () {
-    // Customized callback function
-});
+```js
+<script>
+    $('#notificationBlock').successNotification('This is a success notification', function () {
+        // Customized callback function
+    });
+</script>
+```
     
 **Generate A Warning Notification**
-$('#notificationBlock').warningNotification('This is a warning notification', function () {
-    // Customized callback function
-});
+```js
+<script>
+    $('#notificationBlock').warningNotification('This is a warning notification', function () {
+        // Customized callback function
+    });
+</script>
+```
     
 **Generate A Danger Notification**
-$('#notificationBlock').dangerNotification('This is a error notification', function () {
-    // Customized callback function
-});
+```js
+<script>
+    $('#notificationBlock').dangerNotification('This is a error notification', function () {
+        // Customized callback function
+    });
+</script>
+```
 
 ##How can I customize the notification?
 
@@ -49,14 +69,18 @@ simpleNotificator expects to get up to 3 arguments:
 
 Let's get to the point, in order to customize the notification, you will have to provide the option object in the following format:
 
-$('#notificationBlock').notification('Notification message', {
-    position: 'top',
-    textPrefix: 'Aloha!',
-    stickMode: true,
-    width: '50%' 
-    },function () {
-    // Customized callback function goes here
-});
+```js
+<script>
+    $('#notificationBlock').notification('Notification message', {
+        position: 'top',
+        textPrefix: 'Aloha!',
+        stickMode: true,
+        width: '50%' 
+        },function () {
+        // Customized callback function goes here
+    });
+</script>
+```
 
 As you can see, above I've provided the second argument - the options object.
 The customized notification will be appended at the beginning of the #notificationBlock element, the message prefix will be "Aloha!", the notification will be sticky and the notification width will be 50% out of its parent element.
@@ -64,16 +88,18 @@ Easy, isn't?
  
 ##All the available customizations: 
 
-- inAnimationEffect: Object to define the "entering" animation effect - Default : {opacity: 1}
-- inAnimationDuration: Integer to define the "entering" animation duration in ms - Default : 600 
-- outAnimationEffect: Object to define the "exiting" animation effect - Default : {opacity: 0}
-- outAnimationDuration: Integer to define the "exiting" animation duration in ms - Default : 600
-- outDelay: Integer to define the "lifetime" of the notification once its fully created - Default : 2000
-- hoverDelay: Integer to define the delay that will be caused in case of mouse hover on the notification - Default : 1000
-- position: 'top' for appending to the beginning of the element and 'bottom' to its end - Default : 'bottom'
-- textPrefix: Define a text that will be prefixing the notification message - Default : 'Pay attention!'
-- stickMode: Choose whether you like the notification to be sticky (true) or not (false) - Default : false
-- width: Choose the notification width in pixels, percentages, points, etc - Default :'100%'
+| Property | Description | Default value |
+| --- | --- | --- |
+| inAnimationEffect | Object to define the "entering" animation effect | Default: {opacity: 1} |
+| inAnimationDuration | Integer to define the "entering" animation duration in ms | Default : 600 |
+| outAnimationEffect | Object to define the "exiting" animation effect - Default | Default: {opacity: 0} |
+| outAnimationDuration | Integer to define the "exiting" animation duration in ms | Default : 600 |
+| outDelay | Integer to define the "lifetime" of the notification once its fully created | Default : 2000 |
+| hoverDelay | Integer to define the delay that will be caused in case of mouse hover on the notification | Default : 1000 |
+| position | 'top' for appending to the beginning of the element and 'bottom' to its end | Default : 'bottom' |
+| textPrefix | Define a text that will be prefixing the notification message | Default : 'Pay attention!' |
+| stickMode | Choose whether you like the notification to be sticky (true) or not (false) | Default : false |
+| width | Set the notification element width in pixels, percentages, points, etc | Default :'100%' |
 
 ##Free to you all!
 
