@@ -4,68 +4,10 @@
     <meta charset="UTF-8">
     <title>Simple Notificator</title>
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap3.3.6.css"/>
+    <link rel="stylesheet" type="text/css" href="simpleNotificator.css"/>
     <style>
-        main {
-            width: 970px;
-            margin: auto;
-        }
-
-        .alert {
-            padding: 20px;
-            font-family: arial;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            display: block;
-            opacity: 0;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        .alert button.dismiss {
-            font-family: monospace;
-            font-size: 15px;
-            font-weight: bold;
-            color: #868686;
-            cursor: pointer;
-            text-decoration: none;
-            float: right;
-            background: transparent;
-            border: none;
-            padding: 0;
-        }
-
-        .alert button.dismiss:hover {
-            color: inherit;
-        }
-
-        .alert-info {
-            background: #c1dbf2;
-            color: #0f7581;
-        }
-
-        .alert-success {
-            background: #d2e6d0;
-            color: #277219;
-        }
-
-        .alert-warning {
-            background: #facf9d;
-            color: #816a0f;
-        }
-
-        .alert-danger {
-            background: #faae9d;
-            color: #8e2416;
-        }
-
-        .alert-success a.close {
-            color: #277219;
-            text-decoration: none;
-        }
-
         * {
-            clear: both;
             font-family: arial;
         }
 
@@ -75,38 +17,62 @@
             box-sizing: border-box;
         }
 
+        main {
+            width: 100%;
+            max-width: 970px;
+            margin: auto;
+        }
+
+        #selectDiv {
+            padding: 20px 0;
+        }
+
+        #linksDiv {
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
 
-<main>
-    <div style="float:right; width: 100%; padding: 20px 0;">
-        <input type="text" id="notificationText" placeholder="Enter a message"/>
+<main class="container">
 
-        <select id="chooseType">
-            <option disabled selected value="0">Select notification</option>
-            <option value="info">Info notification</option>
-            <option value="success">Success notification</option>
-            <option value="warning">Warning notification</option>
-            <option value="danger">Danger notification</option>
-        </select>
+    <h1 class="text-center">jQuery simpleNotificator Plugin</h1>
 
-        <button id="createNotification">Go!</button>
+    <div class="row" id="selectDiv">
+
+        <div class="col-xs-12 col-sm-6">
+            <input class="form-control" type="text" id="notificationText" placeholder="Enter a message"/>
+        </div>
+
+        <div class="col-xs-12 col-sm-3">
+            <select class="form-control" id="chooseType">
+                <option disabled selected value="0">Select notification</option>
+                <option value="info">Info notification</option>
+                <option value="success">Success notification</option>
+                <option value="warning">Warning notification</option>
+                <option value="danger">Danger notification</option>
+            </select>
+        </div>
+
+        <div class="col-xs-12 col-sm-3">
+            <button class="btn btn-primary" id="createNotification">Generate notification!</button>
+        </div>
     </div>
 
-    <div>
-        Or just click to generate a notification:
+    <div id="linksDiv">
+        <h4>Or just click to generate a notification:</h4>
         <ul>
             <li><a href="#" id="successLink">A success notification</a></li>
-            <li><a href="#"  id="infoLink">An info notification</a></li>
-            <li><a href="#"  id="warningLink">A warning notification</a></li>
-            <li><a href="#"  id="dangerLink">A danger notification</a></li>
+            <li><a href="#" id="infoLink">An info notification</a></li>
+            <li><a href="#" id="warningLink">A warning notification</a></li>
+            <li><a href="#" id="dangerLink">A danger notification</a></li>
         </ul>
     </div>
 
     <div>
 
-        <div id="dodoCon">
+        <div id="notificationBlock">
 
         </div>
 
@@ -117,39 +83,36 @@
 <script src="simpleNotificator.jQuery.js"></script>
 <script>
 
-    // Here look: I'm choosing to which element I want to append this notification, in this case to #dodoCon, OK?
-    //yes, I get this
-
-    // I can also pass an options object, here i define "stickMode" for true, and I also can set a callback
-
-    // Here we generate a succesNotiifcation
-    $('#dodoCon').successNotification('How are you Vasil?', function () {
+    // On page load examples:
+    $('#notificationBlock').notification('A sticky notification!', {stickMode: true, textPrefix: 'Aloha!'}, function () {
         // Customized callback function
-        console.log('Done!');
+    });
+
+    $('#notificationBlock').successNotification('A fading notification', {textPrefix: 'Aloha!'}, function () {
+        // Customized callback function
     });
 
 
-
-    $('#infoLink').click(function(){
-        $('#dodoCon').notification('This is an info notification', {stickMode: true}, function () {
+    $('#infoLink').click(function () {
+        $('#notificationBlock').notification('This is an info notification', function () {
             // Customized callback function
         });
     });
 
-    $('#successLink').click(function(){
-        $('#dodoCon').successNotification('This is a success notification', {stickMode: true}, function () {
+    $('#successLink').click(function () {
+        $('#notificationBlock').successNotification('This is a success notification', function () {
             // Customized callback function
         });
     });
 
-    $('#warningLink').click(function(){
-        $('#dodoCon').warningNotification('This is a warning notification', {stickMode: true}, function () {
+    $('#warningLink').click(function () {
+        $('#notificationBlock').warningNotification('This is a warning notification', function () {
             // Customized callback function
         });
     });
 
-    $('#dangerLink').click(function(){
-        $('#dodoCon').dangerNotification('This is a error notification', {stickMode: true}, function () {
+    $('#dangerLink').click(function () {
+        $('#notificationBlock').dangerNotification('This is a error notification', function () {
             // Customized callback function
         });
     });
@@ -161,30 +124,27 @@
 
         switch (notificationType) {
             case 'info':
-                $('#dodoCon').notification(notificationText, {stickMode: true}, function () {
+                $('#notificationBlock').notification(notificationText, {stickMode: true}, function () {
                     // Customized callback function
                 });
                 break;
             case 'success':
-                $('#dodoCon').successNotification(notificationText, function () {
+                $('#notificationBlock').successNotification(notificationText, function () {
                     // Customized callback function
                 });
                 break;
             case 'warning':
-                $('#dodoCon').warningNotification(notificationText, {stickMode: true}, function () {
+                $('#notificationBlock').warningNotification(notificationText, {stickMode: true}, function () {
                     // Customized callback function
                 });
                 break;
             case 'danger':
-                $('#dodoCon').dangerNotification(notificationText, {
-                    type: 'info',
-                    textPrefix: 'Haloaaa!'
-                }, function () {
+                $('#notificationBlock').dangerNotification(notificationText, function () {
                     // Customized callback function
                 });
                 break;
             default:
-                $('#dodoCon').notification('I hope you gonna have a nice day!', {stickMode: true}, function () {
+                $('#notificationBlock').notification('I hope you gonna have a nice day!', {stickMode: true}, function () {
                     // Customized callback function
                 });
         }
@@ -196,4 +156,3 @@
 </script>
 </body>
 </html>
-
